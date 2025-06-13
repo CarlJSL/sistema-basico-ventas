@@ -1,0 +1,43 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+    padding-top: 56px; /* Altura de la navbar */
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.siderbar {
+    position: fixed;
+    top: 56px; 
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 56px); 
+    background: #343a40;
+    color: white;
+    padding-top: 20px;
+    overflow-y: auto;
+}
+
+.siderbar a {
+    color: #adb5bd;
+    padding: 12px 20px;
+    display: block;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.siderbar a:hover {
+    background-color: #495057;
+    color: white;
+}
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+}
+footer{
+    margin-left: 220px;
+    padding: 20px;
+}
