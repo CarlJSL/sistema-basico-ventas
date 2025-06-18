@@ -12,10 +12,10 @@ include_once './includes/head.php'
     <div class="content">
         <div class="container-fluid text-center mt-6">
             <h2 class="mb-4">
-                Bienvenido al Panel del Administrador
+                Bienvenido al Panel
             </h2>
             <br>
-            <img src="img/fondo.png" alt=""/>
+            <img src="img/fondo-admin.png" alt=""/>
         </div>
     </div>
 

@@ -16,6 +16,6 @@
     <a href="usuario.php"><i class="fa-solid fa-user-tie mr2"></i>  Usuarios</a>
     <a href="#"><i class="fa fa-file mr2"></i>  Reportes</a>
     <a href="#"><i class="fa fa-cogs mr2"></i>  Configuración</a>
-    <a href="#"><i class="fa fa-sign-out-alt mr2"></i>  Cerrar Sesión</a>
+    <a href="index.php"><i class="fa fa-sign-out-alt mr2"></i>  Cerrar Sesión</a>
 
 </div>
