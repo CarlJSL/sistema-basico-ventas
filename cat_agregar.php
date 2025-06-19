@@ -78,61 +78,65 @@ $categorias = mysqli_query($con, $sqlCat);
 <body>
     <?php include_once './includes/header.php'; ?>
 
-   <div class="container mt-5">
-    <h2>Agregar Categoría o Subcategoría</h2>
+    <div class="content">
+        <div class="container mt-5">
+        <h2>Agregar Categoría o Subcategoría</h2>
 
-    <?php if (!empty($alert)) echo $alert; ?>
+        <?php if (!empty($alert))
+            echo $alert; ?>
 
-    <form method="POST">
-        <div class="mb-3">
-            <label for="tipo" class="form-label">¿Qué deseas agregar?</label>
-            <select name="tipo" id="tipo" class="form-select" required onchange="toggleFormulario()">
-                <option value="">-- Selecciona --</option>
-                <option value="categoria">Categoría</option>
-                <option value="subcategoria">Subcategoría</option>
-            </select>
-        </div>
-
-        <!-- Formulario para Categoría -->
-        <div id="formCategoria" class="mb-3" style="display: none;">
-            <label class="form-label">Nombre de la Categoría</label>
-            <input type="text" name="categoria_nombre" class="form-control">
-        </div>
-
-        <!-- Formulario para Subcategoría -->
-        <div id="formSubcategoria" style="display: none;">
+        <form method="POST">
             <div class="mb-3">
-                <label class="form-label">Nombre de la Subcategoría</label>
-                <input type="text" name="nombre_subcategoria" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Selecciona una Categoría existente (opcional)</label>
-                <select name="idcategoria" class="form-select">
-                    <option value="0">-- Ninguna --</option>
-                    <?php while ($cat = mysqli_fetch_assoc($categorias)) : ?>
-                        <option value="<?= $cat['idcategoria'] ?>"><?= $cat['nombre_categoria'] ?></option>
-                    <?php endwhile; ?>
+                <label for="tipo" class="form-label">¿Qué deseas agregar?</label>
+                <select name="tipo" id="tipo" class="form-select" required onchange="toggleFormulario()">
+                    <option value="">-- Selecciona --</option>
+                    <option value="categoria">Categoría</option>
+                    <option value="subcategoria">Subcategoría</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label class="form-label">O escribe una nueva Categoría</label>
-                <input type="text" name="nueva_categoria_nombre" class="form-control" placeholder="Si no seleccionaste una categoría arriba">
-            </div>
-        </div>
 
-        <button type="submit" class="btn btn-primary">Guardar</button>
+            <!-- Formulario para Categoría -->
+            <div id="formCategoria" class="mb-3" style="display: none;">
+                <label class="form-label">Nombre de la Categoría</label>
+                <input type="text" name="categoria_nombre" class="form-control">
+            </div>
+
+            <!-- Formulario para Subcategoría -->
+            <div id="formSubcategoria" style="display: none;">
+                <div class="mb-3">
+                    <label class="form-label">Nombre de la Subcategoría</label>
+                    <input type="text" name="nombre_subcategoria" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Selecciona una Categoría existente (opcional)</label>
+                    <select name="idcategoria" class="form-select">
+                        <option value="0">-- Ninguna --</option>
+                        <?php while ($cat = mysqli_fetch_assoc($categorias)): ?>
+                            <option value="<?= $cat['idcategoria'] ?>"><?= $cat['nombre_categoria'] ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">O escribe una nueva Categoría</label>
+                    <input type="text" name="nueva_categoria_nombre" class="form-control"
+                        placeholder="Si no seleccionaste una categoría arriba">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
             <a href="opciones-prod.php" class="btn btn-secondary">Cancelar</a>
 
-    </form>
-</div>
+        </form>
+    </div>
+    </div>
 
-<script>
-    function toggleFormulario() {
-        const tipo = document.getElementById("tipo").value;
-        document.getElementById("formCategoria").style.display = tipo === "categoria" ? "block" : "none";
-        document.getElementById("formSubcategoria").style.display = tipo === "subcategoria" ? "block" : "none";
-    }
-</script>
+    <script>
+        function toggleFormulario() {
+            const tipo = document.getElementById("tipo").value;
+            document.getElementById("formCategoria").style.display = tipo === "categoria" ? "block" : "none";
+            document.getElementById("formSubcategoria").style.display = tipo === "subcategoria" ? "block" : "none";
+        }
+    </script>
 
     <?php include_once './includes/footer.php'; ?>
 </body>

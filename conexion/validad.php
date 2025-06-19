@@ -13,7 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     }
 
     // Agregamos usu_usuario al SELECT para guardar en sesión
-    $stmt = $con->prepare("SELECT usu_id, usu_usuario, usu_pass, estado FROM tb_usuario WHERE usu_usuario = ?");
+    $stmt = $con->prepare("SELECT usu_id, usu_usuario, usu_pass, estado 
+                                    FROM tb_usuario 
+                                    WHERE usu_usuario = ?");
     $stmt->bind_param('s', $usuario);
     $stmt->execute();
     $stmt->store_result();

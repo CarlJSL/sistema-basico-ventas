@@ -8,10 +8,11 @@ include './conexion/cone.php';
 <body>
     <?php include_once './includes/header.php'; ?>
 
-    <div class="container mt-5">
+    <div class="content">
+        <div class="container mt-5">
         <h2 class="mb-4">Categorías y Subcategorías</h2>
         <div class="d-flex justify-content-end mb-3 gap-2">
-            <a href="cat_agregar.php" class="btn btn-success">+ Agregar</a>
+            <a href="cat_agregar.php" class="btn btn-success"><i class="fa fa-plus"></i></a>
         </div>
 
         <table class="table table-bordered table-hover align-middle">
@@ -39,7 +40,7 @@ include './conexion/cone.php';
                                 <td>{$nombre_cat}</td>
                                 <td class='text-muted'><i>Sin subcategorías</i></td>
                                 <td>
-                                    <a href='editar_categoria_subcategoria.php?id={$idcat}&tipo=categoria' class='btn btn-warning btn-sm'>Editar Categoría</a>
+                                    <a href='cat_edit.php?id={$idcat}&tipo=categoria' class='btn btn-warning btn-sm'>Editar Categoría</a>
                                 </td>
                               </tr>";
                     } else {
@@ -62,6 +63,7 @@ include './conexion/cone.php';
                 ?>
             </tbody>
         </table>
+    </div>
     </div>
     <?php include_once './includes/footer.php'; ?>
 </body>

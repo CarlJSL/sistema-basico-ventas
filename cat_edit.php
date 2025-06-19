@@ -61,7 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <body>
     <?php include_once './includes/header.php'; ?>
-    <div class="container mt-5">
+    <div class="content" >
+        <div class="container mt-5">
         <h2>Editar <?= $tipo === 'categoria' ? 'Categoría' : 'Subcategoría' ?></h2>
 
         <?php if (!empty($alert)) echo $alert; ?>
@@ -74,6 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <button type="submit" class="btn btn-success" <?= $editado ? 'disabled' : '' ?>>Actualizar</button>
             <a href="listado.php" class="btn btn-secondary">Volver</a>
         </form>
+    </div>
     </div>
 
     <?php include_once './includes/footer.php'; ?>

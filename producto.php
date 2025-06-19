@@ -6,14 +6,13 @@ if (!$con)
     die("Error de Conexión:" . mysqli_connect_error());
 
 // Consulta con JOINs para mostrar nombres reales
-$sql = "
-SELECT 
-    p.*,
-    sc.nombre_subcategoria,
-    c.nombre_categoria
-FROM producto p
-JOIN subcategoria sc ON p.idsubcategoria = sc.idsubcategoria
-JOIN categoria c ON sc.idcategoria = c.idcategoria
+$sql = "SELECT 
+                p.*,
+                sc.nombre_subcategoria,
+                c.nombre_categoria
+        FROM producto p
+        JOIN subcategoria sc ON p.idsubcategoria = sc.idsubcategoria
+        JOIN categoria c ON sc.idcategoria = c.idcategoria
 ";
 
 $result = mysqli_query($con, $sql);

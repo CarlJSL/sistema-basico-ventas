@@ -113,12 +113,27 @@ while ($row = mysqli_fetch_assoc($result)) {
 $html .= '</tbody></table>';
 
 // Configurar DOMPDF
+// Crear un objeto de opciones para configurar Dompdf
 $options = new Options();
+
+// Habilita el parser HTML5, lo que permite interpretar mejor el HTML moderno
 $options->set('isHtml5ParserEnabled', true);
+
+// Establece la fuente predeterminada a "Helvetica"
 $options->set('defaultFont', 'Helvetica');
 
+// Crea una nueva instancia de Dompdf y le pasa las opciones configuradas
 $dompdf = new Dompdf($options);
+
+// Carga el contenido HTML previamente generado (en la variable $html)
 $dompdf->loadHtml($html);
+
+// Define el tamaño del papel (A4) y la orientación (landscape = horizontal)
 $dompdf->setPaper('A4', 'landscape');
+
+// Renderiza el HTML a PDF (convierte el HTML cargado en un archivo PDF)
 $dompdf->render();
+
+// Muestra el PDF en el navegador con un nombre personalizado (Export_nombretabla.pdf)
+// "Attachment" => false significa que **no se descarga automáticamente**, sino que se abre en una pestaña
 $dompdf->stream("Export_$tabla.pdf", ["Attachment" => false]);
