@@ -72,12 +72,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="es">
-<?php include_once './includes/head.php'; ?>
+<?php include_once './includes/head.php' ?>
 
 <body>
-    <?php include_once './includes/header.php'; ?>
+    <?php include_once './includes/header.php' ?>
 
-    <div class="container mt-5">
+    <div class="content">
+        <div class="container mt-5">
         <h3>Agregar Nuevo Producto</h3>
         <div class="container mt-4">
             <?php if (!empty($alert)) echo $alert; ?>
@@ -148,6 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </a>
             </div>
         </form>
+    </div>
     </div>
 
     <script>

@@ -76,73 +76,75 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php include_once './includes/head.php'; ?>
 
 <body>
-<?php include_once './includes/header.php'; ?>
+    <?php include_once './includes/header.php'; ?>
 
-<div class="container mt-4">
-    <h2>Editar Producto</h2>
+    <div class="content">
+        <div class="container mt-4">
+            <h2>Editar Producto</h2>
 
-    <?= $alert ?>
+            <?= $alert ?>
 
-    <?php if (!empty($producto)) : ?>
-    <form method="post">
-        <div class="mb-3">
-            <label class="form-label">Nombre</label>
-            <input type="text" class="form-control" name="nombre" value="<?= htmlspecialchars($producto['prod_nombre']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Descripción</label>
-            <input type="text" class="form-control" name="descripcion" value="<?= htmlspecialchars($producto['prod_descripcion']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Modelo</label>
-            <input type="text" class="form-control" name="modelo" value="<?= htmlspecialchars($producto['prod_model']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Marca</label>
-            <input type="text" class="form-control" name="marca" value="<?= htmlspecialchars($producto['prod_marca']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Categoría</label>
-            <select class="form-select" name="categoria" <?= $bloquearForm ? 'disabled' : '' ?>>
-                <option value="">-- Selecciona Categoría --</option>
-                <?php while ($cat = mysqli_fetch_assoc($categorias)) : ?>
-                    <option value="<?= $cat['idcategoria'] ?>" <?= ($cat['idcategoria'] == $producto['idcategoria']) ? 'selected' : '' ?>>
-                        <?= htmlspecialchars($cat['nombre_categoria']) ?>
-                    </option>
-                <?php endwhile; ?>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Subcategoría</label>
-            <select class="form-select" name="subcategoria" <?= $bloquearForm ? 'disabled' : '' ?>>
-                <option value="">-- Selecciona Subcategoría --</option>
-                <?php mysqli_data_seek($subcategorias, 0); ?>
-                <?php while ($sub = mysqli_fetch_assoc($subcategorias)) : ?>
-                    <option value="<?= $sub['idsubcategoria'] ?>" <?= ($sub['idsubcategoria'] == $producto['idsubcategoria']) ? 'selected' : '' ?>>
-                        <?= htmlspecialchars($sub['nombre_subcategoria']) ?>
-                    </option>
-                <?php endwhile; ?>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Precio</label>
-            <input type="number" class="form-control" name="precio" step="0.01" value="<?= htmlspecialchars($producto['proc_precio']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Stock</label>
-            <input type="number" class="form-control" name="stock" value="<?= htmlspecialchars($producto['prod_stock']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
-        </div>
+            <?php if (!empty($producto)) : ?>
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" value="<?= htmlspecialchars($producto['prod_nombre']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <input type="text" class="form-control" name="descripcion" value="<?= htmlspecialchars($producto['prod_descripcion']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Modelo</label>
+                        <input type="text" class="form-control" name="modelo" value="<?= htmlspecialchars($producto['prod_model']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Marca</label>
+                        <input type="text" class="form-control" name="marca" value="<?= htmlspecialchars($producto['prod_marca']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Categoría</label>
+                        <select class="form-select" name="categoria" <?= $bloquearForm ? 'disabled' : '' ?>>
+                            <option value="">-- Selecciona Categoría --</option>
+                            <?php while ($cat = mysqli_fetch_assoc($categorias)) : ?>
+                                <option value="<?= $cat['idcategoria'] ?>" <?= ($cat['idcategoria'] == $producto['idcategoria']) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($cat['nombre_categoria']) ?>
+                                </option>
+                            <?php endwhile; ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Subcategoría</label>
+                        <select class="form-select" name="subcategoria" <?= $bloquearForm ? 'disabled' : '' ?>>
+                            <option value="">-- Selecciona Subcategoría --</option>
+                            <?php mysqli_data_seek($subcategorias, 0); ?>
+                            <?php while ($sub = mysqli_fetch_assoc($subcategorias)) : ?>
+                                <option value="<?= $sub['idsubcategoria'] ?>" <?= ($sub['idsubcategoria'] == $producto['idsubcategoria']) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($sub['nombre_subcategoria']) ?>
+                                </option>
+                            <?php endwhile; ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Precio</label>
+                        <input type="number" class="form-control" name="precio" step="0.01" value="<?= htmlspecialchars($producto['proc_precio']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Stock</label>
+                        <input type="number" class="form-control" name="stock" value="<?= htmlspecialchars($producto['prod_stock']) ?>" <?= $bloquearForm ? 'disabled' : '' ?>>
+                    </div>
 
-        <?php if (!$bloquearForm): ?>
-        <button type="submit" class="btn btn-primary">Actualizar</button>
-        <a href="producto.php" class="btn btn-secondary">Cancelar</a>
-        <?php endif; ?>
-    </form>
-    <?php else: ?>
-        <div class="alert alert-danger mt-4">Producto no encontrado.</div>
-    <?php endif; ?>
-</div>
-
-<?php include_once './includes/footer.php'; ?>
+                    <?php if (!$bloquearForm): ?>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        <a href="producto.php" class="btn btn-secondary">Cancelar</a>
+                    <?php endif; ?>
+                </form>
+            <?php else: ?>
+                <div class="alert alert-danger mt-4">Producto no encontrado.</div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php include_once './includes/footer.php'; ?>
 </body>
+
 </html>
