@@ -8,7 +8,8 @@ include './conexion/cone.php';
 <body>
     <?php include_once './includes/header.php'; ?>
 
-    <div class="container mt-5">
+    <div class="content">
+        <div class="container mt-5">
         <h2 class="mb-4">Categorías y Subcategorías</h2>
         <div class="d-flex justify-content-end mb-3 gap-2">
             <a href="cat_agregar.php" class="btn btn-success">+ Agregar</a>
@@ -62,6 +63,7 @@ include './conexion/cone.php';
                 ?>
             </tbody>
         </table>
+    </div>
     </div>
     <?php include_once './includes/footer.php'; ?>
 </body>

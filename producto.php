@@ -17,6 +17,7 @@ $res = $con->query($sql);
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h3>Listado de Productos</h3>
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregar">
+                     <a href="exportarPDF.php?tabla=producto" class="btn btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> Exportar PDF</a>
                     <i class="fas fa-plus"></i> Agregar Producto
                 </button>
             </div>
