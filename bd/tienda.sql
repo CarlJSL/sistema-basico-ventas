@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql:3306
--- Tiempo de generación: 13-06-2025 a las 00:15:37
+-- Tiempo de generación: 19-06-2025 a las 03:30:49
 -- Versión del servidor: 8.0.42
 -- Versión de PHP: 8.2.27
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `categoria` (
   `idcategoria` int NOT NULL,
   `nombre_categoria` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `categoria`
@@ -66,7 +66,7 @@ CREATE TABLE `producto` (
   `prod_stock` int NOT NULL,
   `fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP,
   `fecha_actualizacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `producto`
@@ -74,7 +74,7 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`prod_codi`, `prod_nombre`, `prod_descripcion`, `prod_model`, `prod_marca`, `idsubcategoria`, `proc_precio`, `prod_stock`, `fecha_creacion`, `fecha_actualizacion`) VALUES
 (5, 'Estetoscopio Moderno', 'Estetoscopio de doble campana, alta sensibilidad', 'ST500', 'CardioTech', 2, 129.50, 12, '2025-06-12 23:25:24', '2025-06-13 00:14:21'),
-(6, 'Uniforme quirúrgico', 'Uniforme completo de dos piezas, antibacteriano', 'UQ-PRO', 'SaniPro', 3, 149.00, 40, '2025-06-12 23:25:24', '2025-06-12 23:25:24'),
+(6, 'Uniforme quirúrgico000000000000000000000000', 'Uniforme completo de dos piezas, antibacteriano', 'UQ-PRO', 'SaniPro', 3, 149.00, 40, '2025-06-12 23:25:24', '2025-06-13 03:03:17'),
 (7, 'Zapatos clínicos antideslizantes', 'Calzado cómodo y seguro para largas jornadas', 'ZCA-01', 'SafeSteps', 4, 199.90, 18, '2025-06-12 23:25:24', '2025-06-12 23:25:24'),
 (8, 'Gorro quirúrgico estampado', 'Gorro lavable con diseño, talla única', 'GQE2024', 'ColorScrubs', 5, 39.00, 50, '2025-06-12 23:25:24', '2025-06-12 23:25:24'),
 (9, 'Termómetro infrarrojo', 'Medición sin contacto con pantalla digital', 'TI-IRX', 'ThermoScan', 6, 85.00, 30, '2025-06-12 23:25:24', '2025-06-12 23:25:24'),
@@ -94,7 +94,7 @@ CREATE TABLE `subcategoria` (
   `idsubcategoria` int NOT NULL,
   `nombre_subcategoria` varchar(100) NOT NULL,
   `idcategoria` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `subcategoria`
@@ -128,10 +128,10 @@ CREATE TABLE `tb_cliente` (
   `client_nombres` varchar(30) NOT NULL,
   `client_apellidos` varchar(30) NOT NULL,
   `client_direccion` varchar(30) NOT NULL,
-  `client_telefono` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `client_telefono` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `client_correo` varchar(60) NOT NULL,
   `fecha_registro` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tb_cliente`
@@ -159,16 +159,23 @@ INSERT INTO `tb_cliente` (`client_id`, `client_nombres`, `client_apellidos`, `cl
 CREATE TABLE `tb_usuario` (
   `usu_id` int NOT NULL,
   `usu_usuario` varchar(255) NOT NULL,
-  `usu_pass` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `usu_pass` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `rol` enum('admin','vendedor') NOT NULL DEFAULT 'vendedor',
+  `estado` tinyint(1) NOT NULL DEFAULT '1',
+  `fecha_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha_actualizacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tb_usuario`
 --
 
-INSERT INTO `tb_usuario` (`usu_id`, `usu_usuario`, `usu_pass`) VALUES
-(1, '73594630', '$2y$10$JmUQAnUIkGrNOMNFcBOVzeEec3u5QjxFaoK0fZezboybwWZUrT7H2'),
-(2, 'CarlosSipan', '$2y$10$9AVROUqBpSb6gi/Lu/dnGu2VFq4Za8K8QBsnag9c2H1VyvYPP1iW2');
+INSERT INTO `tb_usuario` (`usu_id`, `usu_usuario`, `usu_pass`, `email`, `rol`, `estado`, `fecha_creacion`, `fecha_actualizacion`) VALUES
+(1, '73594630', '$2y$10$/Ev7J6.jt2qXqS/FyJK5KOw63FSrp4fax5bMHRSD3TmeTMV6o3XUS', 'carlos@gmail.com', 'vendedor', 1, '2025-06-18 03:56:57', '2025-06-18 20:49:22'),
+(9, 'dsadwdw', '$2y$10$8yBeDazgmlYXsePTDczMMe2pNtFdoIN9mlXNXWfH34RNZxbLDXMTW', 'carlodds@gmail.com', 'admin', 1, '2025-06-18 04:44:35', '2025-06-18 15:40:53'),
+(10, 'wawadwadwadwdwdw', '$2y$10$IaxC44k780Z/hgS8RamgC.eY6O8koltd7ks0EsPXOng1WTaF1QuaO', 'dadwadwawadw@gmail.com', 'admin', 1, '2025-06-18 04:49:18', '2025-06-18 04:49:18'),
+(11, '73423423423', '$2y$10$PfFGVoRibkefrkMDtOvdkeeQSmP/QjMJyfZA79qeZynvKq47BG/6y', 'dwedwedw@gmail.com', 'admin', 1, '2025-06-18 04:54:09', '2025-06-18 04:59:34');
 
 --
 -- Índices para tablas volcadas
@@ -240,7 +247,7 @@ ALTER TABLE `tb_cliente`
 -- AUTO_INCREMENT de la tabla `tb_usuario`
 --
 ALTER TABLE `tb_usuario`
-  MODIFY `usu_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `usu_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
