@@ -52,7 +52,7 @@ switch ($tabla) {
         $tituloTabla = 'Listado de Productos';
         $nombresColumnas = [
             'Id', 'Nombre', 'Descripción', 'Modelo', 'Marca',
-            'Categoría', 'Subcategoría', 'Precio', 'Stock',
+            'Subcategoría', 'Precio', 'Stock',
             'Fecha Creación', 'Última Actualización'
         ];
         break;
