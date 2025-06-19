@@ -26,6 +26,14 @@ while ($col = mysqli_fetch_assoc($columnsResult)) {
     $columns[] = $col['Field'];
 }
 
+// Excluir columnas sensibles si es tb_usuario
+if ($tabla === 'tb_usuario') {
+    $columns = array_filter($columns, function($col) {
+        return $col !== 'usu_pass';
+    });
+    $columns = array_values($columns); // Reindexar
+}
+
 // Definir encabezados personalizados y título
 $nombresColumnas = [];
 $tituloTabla = '';
