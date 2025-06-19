@@ -60,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar']) && isset(
         <div class="container-fluid text-center mt-6">
             <div class="d-flex justify-content-between align-items-center" style="padding-top: 30px;">
                 <h3 class="mb-0">Listado de Productos</h3>
+                <a href="exportarPDF.php?tabla=producto" class="btn btn-danger" target="_blank">Exportar PDF</a>
                 <a href="producto_add.php" class="btn btn-success">Agregar</a>
             </div>
             <br>

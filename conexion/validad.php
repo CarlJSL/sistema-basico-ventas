@@ -12,19 +12,22 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         exit;
     }
 
-    $stmt = $con->prepare("SELECT usu_id, usu_pass, estado FROM tb_usuario WHERE usu_usuario = ?");
+    // Agregamos usu_usuario al SELECT para guardar en sesión
+    $stmt = $con->prepare("SELECT usu_id, usu_usuario, usu_pass, estado FROM tb_usuario WHERE usu_usuario = ?");
     $stmt->bind_param('s', $usuario);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows === 1) {
-        $stmt->bind_result($id, $hash, $estado);
+        // Ahora hacemos bind de usu_usuario también
+        $stmt->bind_result($id, $usu_usuario, $hash, $estado);
         $stmt->fetch();
 
         if (password_verify($contrasena, $hash)) {
             if ($estado == '1') {
-                $_SESSION['Uusuario'] = $usuario;
+                $_SESSION['usuario'] = $usu_usuario; // Aquí se guarda correctamente
                 $_SESSION['id'] = $id;
+
                 header("Location: ../admin.php");
                 exit;
             } else {

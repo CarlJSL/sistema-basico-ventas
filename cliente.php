@@ -4,7 +4,7 @@ include_once './conexion/cone.php';
 if (!$con)
     die("Error de Conexión:" . mysqli_connect_error());
 
-$sql = "select * from tb_cliente";
+$sql = "SELECT * FROM tb_cliente";
 $result = mysqli_query($con, $sql);
 
 if (!$result) {
@@ -30,7 +30,9 @@ include_once './includes/head.php'
         <div class="container-fluid text-center mt-6">
             <div class="d-flex justify-content-between align-items-center" style="padding-top: 30px; ;">
                 <h3 class="mb-0">Listado de Cliente</h3>
+                <a href="exportarPDF.php?tabla=tb_cliente" class="btn btn-danger" target="_blank">Exportar PDF</a>
                 <a href="cliente_add.php" class="btn btn-success">Agregar</a>
+                
 
             </div>
             <br>
@@ -41,7 +43,7 @@ include_once './includes/head.php'
                     <th style="text-align: center;">Apellidos</th>
                     <th style="text-align: center;">Dirección</th>
                     <th style="text-align: center;">Telefono</th>
-                    <th style="text-align: center;">Código</th>
+                    <th style="text-align: center;">Email</th>
                     <th style="text-align: center;">Fecha Registro</th>
                     <th style="text-align: center;">Opciones</th>
                 </thead>

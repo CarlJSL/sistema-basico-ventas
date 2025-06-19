@@ -30,6 +30,7 @@ unset($_SESSION['alerta_add'], $_SESSION['alerta_edit'], $_SESSION['alerta_succe
         <div class="container-fluid text-center mt-6">
             <div class="d-flex justify-content-between align-items-center" style="padding-top: 30px;">
                 <h3 class="mb-0">Listado de Usuarios</h3>
+                <a href="exportarPDF.php?tabla=tb_usuario" class="btn btn-danger" target="_blank">Exportar PDF</a>
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar</button>
             </div>
 
