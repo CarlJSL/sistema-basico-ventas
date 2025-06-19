@@ -1,10 +1,56 @@
 <?php
 include_once './conexion/cone.php';
+<<<<<<< HEAD
+
+if (!$con)
+    die("Error de Conexión:" . mysqli_connect_error());
+
+// Consulta con JOINs para mostrar nombres reales
+$sql = "SELECT 
+                p.*,
+                sc.nombre_subcategoria,
+                c.nombre_categoria
+        FROM producto pz
+        JOIN subcategoria sc ON p.idsubcategoria = sc.idsubcategoria
+        JOIN categoria c ON sc.idcategoria = c.idcategoria
+";
+
+$result = mysqli_query($con, $sql);
+
+if (!$result) {
+    die("Error en la consulta: " . mysqli_error($con));
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar']) && isset($_POST['eliminar_id'])) {
+    $idEliminar = intval($_POST['eliminar_id']);
+
+    $sql = "DELETE FROM producto WHERE prod_codi = ?";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("i", $idEliminar);
+
+    if ($stmt->execute()) {
+        echo "<script>
+            alert('Producto eliminado correctamente.');
+            window.location.href = 'producto.php';
+        </script>";
+        exit;
+    } else {
+        echo "<script>
+            alert('Error al eliminar el producto: " . $stmt->error . "');
+            window.location.href = 'producto.php';
+        </script>";
+        exit;
+    }
+
+    $stmt->close();
+}
+=======
 $sql = "SELECT p.*, s.nombre_subcategoria, c.nombre_categoria 
         FROM producto p
         JOIN subcategoria s ON p.idsubcategoria = s.idsubcategoria
         JOIN categoria c ON s.idcategoria = c.idcategoria";
 $res = $con->query($sql);
+>>>>>>> 0b345213688e665eb5f574e695638b18deac0dc8
 ?>
 <!DOCTYPE html>
 <html lang="es">
