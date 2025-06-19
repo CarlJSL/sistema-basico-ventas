@@ -1,6 +1,7 @@
 <?php
 session_start();
-require './vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
