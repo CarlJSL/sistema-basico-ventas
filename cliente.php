@@ -30,8 +30,8 @@ include_once './includes/head.php'
         <div class="container-fluid text-center mt-6">
             <div class="d-flex justify-content-between align-items-center" style="padding-top: 30px; ;">
                 <h3 class="mb-0">Listado de Cliente</h3>
-                <a href="exportarPDF.php?tabla=tb_cliente" class="btn btn-danger" target="_blank">Exportar PDF</a>
-                <a href="cliente_add.php" class="btn btn-success">Agregar</a>
+                <a href="exportarPDF.php?tabla=tb_cliente" class="btn btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> Exportar PDF</a>
+                <a href="cliente_add.php" class="btn btn-success"><i class="fa fa-plus"></i></a>
                 
 
             </div>
@@ -62,8 +62,8 @@ include_once './includes/head.php'
                             <td><?php echo $row["client_correo"] ?></td>
                             <td><?php echo $row["fecha_registro"] ?></td>
                             <td>
-                                <a href="cliente_actu.php?id=<?php echo $row['client_id']; ?>" class="btn btn-success">
-                                    <i class="fa fa-pencil"></i> Editar
+                                <a href="cliente_actu.php?id=<?php echo $row['client_id']; ?>" class="btn btn-primary">
+                                    <i class="fa fa-pencil"></i> 
                                 </a>
 
                                 <a class="btn btn-danger"><i class="fa fa-trash"></i></a>

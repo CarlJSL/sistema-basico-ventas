@@ -60,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar']) && isset(
         <div class="container-fluid text-center mt-6">
             <div class="d-flex justify-content-between align-items-center" style="padding-top: 30px;">
                 <h3 class="mb-0">Listado de Productos</h3>
-                <a href="exportarPDF.php?tabla=producto" class="btn btn-danger" target="_blank">Exportar PDF</a>
-                <a href="producto_add.php" class="btn btn-success">Agregar</a>
+                <a href="exportarPDF.php?tabla=producto" class="btn btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> Exportar PDF</a>
+                <a href="producto_add.php" class="btn btn-success"><i class="fa fa-plus"></i></a>
             </div>
             <br>
 
@@ -97,10 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar']) && isset(
                             <td><?php echo $row["fecha_creacion"]; ?></td>
                             <td><?php echo $row["fecha_actualizacion"]; ?></td>
                             <td>
-                                <a href="producto_edit.php?id=<?php echo $row["prod_codi"]; ?>" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                <a href="producto_edit.php?id=<?php echo $row["prod_codi"]; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                                 <form method="post" action="producto.php" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?');" style="display:inline;">
                                     <input type="hidden" name="eliminar_id" value="<?= $row['prod_codi'] ?>">
-                                    <button type="submit" name="eliminar" class="btn btn-danger btn-sm">Eliminar</button>
+                                    <button type="submit" name="eliminar" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </form>
 
 

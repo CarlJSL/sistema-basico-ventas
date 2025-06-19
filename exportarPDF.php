@@ -26,14 +26,6 @@ while ($col = mysqli_fetch_assoc($columnsResult)) {
     $columns[] = $col['Field'];
 }
 
-// Excluir columnas sensibles si es tb_usuario
-if ($tabla === 'tb_usuario') {
-    $columns = array_filter($columns, function($col) {
-        return $col !== 'usu_pass';
-    });
-    $columns = array_values($columns); // Reindexar
-}
-
 // Definir encabezados personalizados y título
 $nombresColumnas = [];
 $tituloTabla = '';
@@ -51,7 +43,7 @@ switch ($tabla) {
         $tituloTabla = 'Listado de Productos';
         $nombresColumnas = [
             'Id', 'Nombre', 'Descripción', 'Modelo', 'Marca',
-            'Categoría', 'Subcategoría', 'Precio', 'Stock',
+            'Subcategoría', 'Precio', 'Stock',
             'Fecha Creación', 'Última Actualización'
         ];
         break;
